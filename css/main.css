@@ -1,0 +1,17 @@
+@import "base.css";
+
+.wrap {width:100%; height:100%; max-width:1200px; margin:0 auto; position:relative;}
+.top_menu {background-color:#333; color:#fff;}
+.top_menu > ul {float:right; margin-right:1em;}
+.top_menu > ul > li {float:right; padding:0.5em;}
+.top {padding:1rem 0; font-size:1.5rem; border:1px solid #999; background-color:#f8f8f8;}
+.top > .logo {float:left; margin-left:1em;}
+.top > .bars {float:right; margin-right:1em;}
+.navs {margin-top:2rem; border-bottom:1px solid #999;}
+.navs > li {float:left; width:24%; border:1px solid #999; padding:1rem; text-align:center; border-bottom:1px solid #fff;}
+.navs > li:nth-child(1) {margin:0 1% -1px 0%;}
+.navs > li:nth-child(2) {margin:0 0.7% -1px 0.3%;}
+.navs > li:nth-child(3) {margin:0 0.3% -1px 0.7%;}
+.navs > li:nth-child(4) {margin:0 0% -1px 1%;}
+.copyright {width:100%; background-color:#333; color:#fff; text-align:center; padding:0.5em; position:absolute; bottom:0;}
+.mbody {border-left:1px solid #999; border-bottom: 1px solid #999; border-right:1px solid #999; min-height:calc(100% - 17rem); padding:2rem;}
