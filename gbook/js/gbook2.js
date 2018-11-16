@@ -1,11 +1,12 @@
 /*
-gbook_api.php
-chk:'I', writer:"A", content:"B", email:"C" --> 데이터 저장
-chk:'D', id: 2 --> id가 2 번인 데이터를 삭제하겠다.
-chk:'S' 데이터를 보내주겠다.
+개발 API명세서
+1. API주소: gbook_api.php
+2. chk:'I', writer:"A", content:"B", email:"C" --> 데이터 저장
+3. chk:'D', id: 2 --> id가 2 번인 데이터를 삭제하겠다.
+4. chk:'S' 데이터를 보내주겠다.
 */
-var gbook = new Ajax("gbook_api.php");
 
+//데이터 가져오기
 function getData(data) {
 	if(data.code == 200) {
 		var html = '';
@@ -22,17 +23,14 @@ function getData(data) {
 	}
 }
 
-//삭제
+//데이터 삭제
 function delData(id) {
 	gbook.add({id:id, chk:"D"});
 	gbook.send(getData);
 }
 
-//F5누르면 실행
-gbook.add({chk:"S"});
-gbook.send(getData);
-
-$("#bt_save").click(function(){
+//데이터 저장
+function insData(){
 	var writer = $("#writer");
 	var email = $("#email");
 	var content = $("#content");
@@ -59,5 +57,12 @@ $("#bt_save").click(function(){
 		email: email.val()
 	});
 	gbook.send(getData);
-});
+}
+
+//F5누르면 실행
+var gbook = new Ajax("gbook_api.php");
+gbook.add({chk:"S"});
+gbook.send(getData);
+
+$("#bt_save").click(insData);
 
