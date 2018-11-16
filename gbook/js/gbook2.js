@@ -123,9 +123,24 @@ function delData(id) {
 
 //데이터 입력
 $("#bt_save").click(function(){
-	var writer = $("#writer").val();
-	var email = $("#email").val();
-	var content = $("#content").val();
+	var writer = $("#writer");
+	var email = $("#email");
+	var content = $("#content");
+	if(writer.val() == "") {
+		alert("작성자를 입력해 주세요.");
+		writer.focus();
+		return false;
+	}
+	if(email.val() == "") {
+		alert("이메일을 입력해 주세요.");
+		email.focus();
+		return false;
+	}
+	if(content.val() == "") {
+		alert("글을 입력해 주세요.");
+		content.focus();
+		return false;
+	}
 	$.ajax({
 		url: "gbook_api.php",
 		type: "post",
