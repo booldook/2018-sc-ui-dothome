@@ -7,6 +7,7 @@
 */
 
 //데이터 가져오기
+/*
 function getData(data) {
 	if(data.code == 200) {
 		var html = '';
@@ -65,4 +66,88 @@ gbook.add({chk:"S"});
 gbook.send(getData);
 
 $("#bt_save").click(insData);
+*/
 
+
+//리스트 가져오기
+$.ajax({
+	url: "gbook_api.php",
+	type: "post",
+	dataType: "json",
+	data: {chk:"S"},
+	success: function(data){
+		var html = '';
+		if(data.code == 200) {
+			for(var i=0; i<data.lists.length; i++) {
+				html += '<li>';
+				html += '<div>'+data.lists[i].writer+' | '+data.lists[i].email+'</div>';
+				html += '<div>'+data.lists[i].wdate+'</div>';
+				html += '<p>'+data.lists[i].content+'</p>';
+				html += '<i onclick="delData('+data.lists[i].id+');"></i>';
+				html += '</li>';
+			}
+			$(".lists").html(html);
+		}
+	},
+	error: function(a, b, c) {
+		console.log(a, b, c);
+	}
+});
+
+//데이터 삭제
+function delData(id) {
+	$.ajax({
+		url: "gbook_api.php",
+		type: "post",
+		dataType: "json",
+		data: {chk:"D", id:id},
+		success: function(data){
+			var html = '';
+			if(data.code == 200) {
+				for(var i=0; i<data.lists.length; i++) {
+					html += '<li>';
+					html += '<div>'+data.lists[i].writer+' | '+data.lists[i].email+'</div>';
+					html += '<div>'+data.lists[i].wdate+'</div>';
+					html += '<p>'+data.lists[i].content+'</p>';
+					html += '<i onclick="delData('+data.lists[i].id+');"></i>';
+					html += '</li>';
+				}
+				$(".lists").html(html);
+			}
+		},
+		error: function(a, b, c) {
+			console.log(a, b, c);
+		}
+	});
+}
+
+//데이터 입력
+$("#bt_save").click(function(){
+	var writer = $("#writer").val();
+	var email = $("#email").val();
+	var content = $("#content").val();
+	$.ajax({
+		url: "gbook_api.php",
+		type: "post",
+		dataType: "json",
+		data: {chk:"I", writer:writer, email:email, content:content},
+		success: function(data){
+			var html = '';
+			if(data.code == 200) {
+				for(var i=0; i<data.lists.length; i++) {
+					html += '<li>';
+					html += '<div>'+data.lists[i].writer+' | '+data.lists[i].email+'</div>';
+					html += '<div>'+data.lists[i].wdate+'</div>';
+					html += '<p>'+data.lists[i].content+'</p>';
+					html += '<i onclick="delData('+data.lists[i].id+');"></i>';
+					html += '</li>';
+				}
+				$(".lists").html(html);
+				$("input, textarea").val('');
+			}
+		},
+		error: function(a, b, c) {
+			console.log(a, b, c);
+		}
+	});
+});
