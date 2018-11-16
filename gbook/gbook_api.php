@@ -36,10 +36,12 @@ $result.= '"code":200,';
 $result.= '"lists":[';
 $sql = " select * from guestbook order by id desc ";
 $res = mysqli_query($connect, $sql);
-while($rs = mysqli_fetch_array($res)) {
-	$result.= '{"id":'.$rs['id'].', "writer":"'.$rs['writer'].'", "content":"'.$rs['content'].'", "wdate":"'.$rs['wdate'].'", "email":"'.$rs['email'].'"},';
-}	
-$result = substr($result, 0, -1);
+if(mysqli_num_rows($res) > 0) {
+	while($rs = mysqli_fetch_array($res)) {
+		$result.= '{"id":'.$rs['id'].', "writer":"'.$rs['writer'].'", "content":"'.$rs['content'].'", "wdate":"'.$rs['wdate'].'", "email":"'.$rs['email'].'"},';
+	}	
+	$result = substr($result, 0, -1);
+}
 $result.= ']';
 $result.= '}';
 
