@@ -7,11 +7,23 @@ chk:'S' 데이터를 보내주겠다.
 var gbook = new Ajax("gbook_api.php");
 
 function getData(data) {
-	console.log(data);
 	if(data.code == 200) {
-		alert("데이터가 성공적으로 저장되었습니다.");
+		var html = '';
+		for(var i=0; i<data.lists.length; i++) {
+			html += '<li>';
+			html += '<div>'+data.lists[i].writer+' | '+data.lists[i].email+'</div>';
+			html += '<div>'+data.lists[i].wdate+'</div>';
+			html += '<p>'+data.lists[i].content+'</p>';
+			html += '<i onclick="delData('+data.lists[i].id+');"></i>';
+			html += '</li>';
+		}
+		$(".lists").html(html);
 	}
 }
+
+//F5누르면 실행
+gbook.add({chk:"S"});
+gbook.send(getData);
 
 $("#bt_save").click(function(){
 	var writer = $("#writer");
