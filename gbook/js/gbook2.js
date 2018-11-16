@@ -145,7 +145,7 @@ $("#bt_save").click(function(){
 		url: "gbook_api.php",
 		type: "post",
 		dataType: "json",
-		data: {chk:"I", writer:writer, email:email, content:content},
+		data: {chk:"I", writer:writer.val(), email:email.val(), content:content.val()},
 		success: function(data){
 			var html = '';
 			if(data.code == 200) {
