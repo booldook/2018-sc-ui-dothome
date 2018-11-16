@@ -7,7 +7,10 @@ chk:'S' 데이터를 보내주겠다.
 var gbook = new Ajax("gbook_api.php");
 
 function getData(data) {
-	
+	console.log(data);
+	if(data.code == 200) {
+		alert("데이터가 성공적으로 저장되었습니다.");
+	}
 }
 
 $("#bt_save").click(function(){

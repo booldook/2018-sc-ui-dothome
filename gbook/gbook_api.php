@@ -25,5 +25,10 @@ if($chk == "I") {
 	$sql.= " email = '$email', ";
 	$sql.= " wdate = '$wdate' ";
 	mysqli_query($connect, $sql);
+
+	$result = '{';
+	$result.= '"code":200';	
+	$result.= '}';
+	echo $result;
 }
 ?>
