@@ -13,5 +13,5 @@
 .navs > li:nth-child(2) {margin:0 0.7% -1px 0.3%;}
 .navs > li:nth-child(3) {margin:0 0.3% -1px 0.7%;}
 .navs > li:nth-child(4) {margin:0 0% -1px 1%;}
-.copyright {width:100%; background-color:#333; color:#fff; text-align:center; padding:0.5em; position:absolute; bottom:0;}
-.mbody {border-left:1px solid #999; border-bottom: 1px solid #999; border-right:1px solid #999; min-height:calc(100% - 17rem); padding:2rem;}
+.copyright {width:100%; background-color:#333; color:#fff; text-align:center; padding:0.5em; position:fixed; bottom:0; left:0;}
+.mbody {border-left:1px solid #999; border-bottom: 1px solid #999; border-right:1px solid #999; min-height:calc(100% - 17rem); padding:2rem;background-color:#fff;}
