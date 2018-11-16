@@ -27,7 +27,6 @@ $sql.= " content = '$content', ";
 $sql.= " writer = '$writer', ";
 $sql.= " email = '$email', ";
 $sql.= " wdate = '$wdate' ";
-
 mysqli_query($connect, $sql);
 ?>
 <script>

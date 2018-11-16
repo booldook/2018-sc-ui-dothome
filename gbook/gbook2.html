@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>방명록</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="css/gbook2.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<div class="wrap">
+		<ul class="lists">
+
+		</ul>
+		<section class="write">
+			<form name="g_form" method="post" action="gbook_ok.php">
+				<div>
+					<input type="text" name="writer" id="writer" class="w3-input w3-border" placeholder="작성자">
+				</div>
+				<div>
+					<input type="text" name="email" id="email" class="w3-input w3-border" placeholder="이메일">
+				</div>
+				<div>
+					<textarea class="w3-input w3-border" name="content" id="content" placeholder="방명록을 작성해 주세요."></textarea>
+				</div>
+				<div>
+					<button type="button" class="w3-button w3-red" id="bt_save">저장</button>
+					<button type="reset" class="w3-button w3-red">취소</button>
+				</div>
+			</form>
+		</section>
+	</div>
+	<script src="js/Ajax.js"></script>
+	<script src="js/gbook2.js"></script>
+</body>
+
+</html>
