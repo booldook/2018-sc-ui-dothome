@@ -18,7 +18,14 @@ function getData(data) {
 			html += '</li>';
 		}
 		$(".lists").html(html);
+		$("input, textarea").val('');
 	}
+}
+
+//삭제
+function delData(id) {
+	gbook.add({id:id, chk:"D"});
+	gbook.send(getData);
 }
 
 //F5누르면 실행
