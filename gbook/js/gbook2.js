@@ -6,9 +6,10 @@
 4. chk:'S' 데이터를 보내주겠다.
 */
 
-//데이터 가져오기
 /*
+//데이터 가져오기
 function getData(data) {
+	console.log(data);
 	if(data.code == 200) {
 		var html = '';
 		for(var i=0; i<data.lists.length; i++) {
@@ -69,29 +70,35 @@ $("#bt_save").click(insData);
 */
 
 
+
+//공통함수 - 통신이 성공했을때
+function successFn(data){
+	var html = '';
+	if(data.code == 200) {
+		for(var i=0; i<data.lists.length; i++) {
+			html += '<li>';
+			html += '<div>'+data.lists[i].writer+' | '+data.lists[i].email+'</div>';
+			html += '<div>'+data.lists[i].wdate+'</div>';
+			html += '<p>'+data.lists[i].content+'</p>';
+			html += '<i onclick="delData('+data.lists[i].id+');"></i>';
+			html += '</li>';
+		}
+		$(".lists").html(html);
+	}
+}
+//공통함수 - 통신이 실패했을때
+function errorFn(xhr, status, error) {
+	console.log(xhr, status, error);
+}
+ 
 //리스트 가져오기
 $.ajax({
 	url: "gbook_api.php",
 	type: "post",
 	dataType: "json",
 	data: {chk:"S"},
-	success: function(data){
-		var html = '';
-		if(data.code == 200) {
-			for(var i=0; i<data.lists.length; i++) {
-				html += '<li>';
-				html += '<div>'+data.lists[i].writer+' | '+data.lists[i].email+'</div>';
-				html += '<div>'+data.lists[i].wdate+'</div>';
-				html += '<p>'+data.lists[i].content+'</p>';
-				html += '<i onclick="delData('+data.lists[i].id+');"></i>';
-				html += '</li>';
-			}
-			$(".lists").html(html);
-		}
-	},
-	error: function(a, b, c) {
-		console.log(a, b, c);
-	}
+	success: successFn,
+	error: errorFn
 });
 
 //데이터 삭제
@@ -101,23 +108,8 @@ function delData(id) {
 		type: "post",
 		dataType: "json",
 		data: {chk:"D", id:id},
-		success: function(data){
-			var html = '';
-			if(data.code == 200) {
-				for(var i=0; i<data.lists.length; i++) {
-					html += '<li>';
-					html += '<div>'+data.lists[i].writer+' | '+data.lists[i].email+'</div>';
-					html += '<div>'+data.lists[i].wdate+'</div>';
-					html += '<p>'+data.lists[i].content+'</p>';
-					html += '<i onclick="delData('+data.lists[i].id+');"></i>';
-					html += '</li>';
-				}
-				$(".lists").html(html);
-			}
-		},
-		error: function(a, b, c) {
-			console.log(a, b, c);
-		}
+		success: successFn,
+		error: errorFn
 	});
 }
 
@@ -146,23 +138,7 @@ $("#bt_save").click(function(){
 		type: "post",
 		dataType: "json",
 		data: {chk:"I", writer:writer.val(), email:email.val(), content:content.val()},
-		success: function(data){
-			var html = '';
-			if(data.code == 200) {
-				for(var i=0; i<data.lists.length; i++) {
-					html += '<li>';
-					html += '<div>'+data.lists[i].writer+' | '+data.lists[i].email+'</div>';
-					html += '<div>'+data.lists[i].wdate+'</div>';
-					html += '<p>'+data.lists[i].content+'</p>';
-					html += '<i onclick="delData('+data.lists[i].id+');"></i>';
-					html += '</li>';
-				}
-				$(".lists").html(html);
-				$("input, textarea").val('');
-			}
-		},
-		error: function(a, b, c) {
-			console.log(a, b, c);
-		}
+		success: successFn,
+		error: errorFn
 	});
 });
