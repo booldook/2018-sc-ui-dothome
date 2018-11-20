@@ -9,11 +9,21 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="../css/sound.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 </head>
 
 <body>
-
+	<div class="wrap_snd">
+		<audio id="snd">
+			<source src="../mp3/sound1.mp3" type="audio/mpeg">
+		</audio>
+		<select id="sel_snd" class="w3-select w3-border">
+			<option value="../mp3/sound1">음악1</option>
+			<option value="../mp3/sound2">음악2</option>
+			<option value="../mp3/sound3">음악3</option>
+		</select>
+		<i class="fa fa-play-circle" id="bt_play"></i>
+	</div>
 	<script src="../js/sound.js"></script>
 </body>
 
