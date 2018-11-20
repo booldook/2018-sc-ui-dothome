@@ -3,7 +3,7 @@
 <? include_once "../include/nav.php"; ?>
 <!--본문 영역.시작 -->
 <div class="mbody">
-about 페이지
+<iframe width="100%" height="450" frameborder="0" src="../board/bbs/board.php?bo_table=about"></iframe>
 </div>
 <!--본문 영역.종료 -->
 <? include_once "../include/bottom.php"; ?>

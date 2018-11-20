@@ -3,4 +3,5 @@ connect.php
 sftp.json
 .vscode
 .htaccess
+*.mp3
 
