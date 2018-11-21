@@ -18,7 +18,7 @@ $("#bt_play").click(function(){
 	}
 });
 */
-// 2번 played 속성 사용
+// 2번 paused 속성 사용
 /*
 $("#bt_play").click(function(){
 	if($("#snd")[0].paused) {
@@ -32,6 +32,7 @@ $("#bt_play").click(function(){
 });
 */
 // 3번 순수 자바스크립트
+/*
 var snd = document.querySelector("#snd");
 var btPlay = document.querySelector("#bt_play");
 btPlay.addEventListener("click", soundPlay);
@@ -48,5 +49,28 @@ function soundPlay(){
 		this.classList.toggle("fa-pause-circle", false);
 	}
 }
+*/
 
 
+
+function musicPlay(opt) {
+	if(opt) {
+		$("#snd")[0].play();
+		$("#bt_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
+		console.log($("#snd")[0].textTracks);
+	}
+	else {
+		$("#snd")[0].pause();
+		$("#bt_play").removeClass("fa-pause-circle").addClass("fa-play-circle");
+	}
+}
+
+$("#bt_play").on("click", function(){
+	if($("#snd")[0].paused) musicPlay(true);
+	else musicPlay(false);
+});
+
+$("#sel_snd").on("change",function(){
+	$("#snd")[0].src = $(this).val();
+	musicPlay(true);
+});

@@ -6,10 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>MP3플레이어</title>
+	<link href="../css/simple-slider.css" rel="stylesheet">
+  <link href="../css/simple-slider-volume.css" rel="stylesheet"> 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="../css/sound.css">
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="../js/simple-slider.min.js"></script>
 </head>
 
 <body>
@@ -18,9 +21,9 @@
 			<source src="../mp3/sound1.mp3" type="audio/mpeg">
 		</audio>
 		<select id="sel_snd" class="w3-select w3-border">
-			<option value="../mp3/sound1">음악1</option>
-			<option value="../mp3/sound2">음악2</option>
-			<option value="../mp3/sound3">음악3</option>
+			<option value="../mp3/sound1.mp3">음악1</option>
+			<option value="../mp3/sound2.mp3">음악2</option>
+			<option value="../mp3/sound3.mp3">음악3</option>
 		</select>
 		<i class="fa fa-play-circle" id="bt_play"></i>
 	</div>
