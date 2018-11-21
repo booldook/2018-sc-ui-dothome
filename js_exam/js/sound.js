@@ -54,23 +54,29 @@ function soundPlay(){
 
 
 function musicPlay(opt) {
-	if(opt) {
+	if (opt) {
 		$("#snd")[0].play();
 		$("#bt_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
 		console.log($("#snd")[0].textTracks);
-	}
-	else {
+	} else {
 		$("#snd")[0].pause();
 		$("#bt_play").removeClass("fa-pause-circle").addClass("fa-play-circle");
 	}
 }
 
-$("#bt_play").on("click", function(){
-	if($("#snd")[0].paused) musicPlay(true);
+$("#bt_play").on("click", function () {
+	if ($("#snd")[0].paused) musicPlay(true);
 	else musicPlay(false);
 });
 
-$("#sel_snd").on("change",function(){
+$("#sel_snd").on("change", function () {
 	$("#snd")[0].src = $(this).val();
 	musicPlay(true);
+});
+
+$("#data_slider").on("slider:ready", function(e, data) {
+	$("#snd")[0].volume = 0.5;
+});
+$("#data_slider").on("slider:changed", function (e, data) {
+	$("#snd")[0].volume = data.value.toFixed(1);
 });
