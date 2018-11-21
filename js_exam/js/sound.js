@@ -80,3 +80,14 @@ $("#data_slider").on("slider:ready", function(e, data) {
 $("#data_slider").on("slider:changed", function (e, data) {
 	$("#snd")[0].volume = data.value.toFixed(1);
 });
+
+$("#bt_volume").on("click", function(){
+	if($("#snd")[0].muted) {
+		$("#snd")[0].muted = false;
+		$(this).removeClass("fa-volume-off").addClass("fa-volume-up");
+	}
+	else {
+		$("#snd")[0].muted = true;
+		$(this).removeClass("fa-volume-up").addClass("fa-volume-off");
+	}
+});
